@@ -18,7 +18,22 @@ export const appConfig: ApplicationConfig = {
     NgxSpinnerModule,
     provideAnimations(), // required animations providers
     provideToastr(),
-    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(withFetch(),withInterceptors([headersInterceptor,loaderInterceptor,handleErrorInterceptor])), 
+    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes,withPrerendering({
+      // 🔹 Exclude dynamic routes from prerendering
+      renderMode: (url) => {
+        if (url.startsWith('/productDetails/') || url.startsWith('/checkout/')) {
+          return 'no-prerender';
+        }
+        return 'default';
+      }
+    })), provideClientHydration(withEventReplay()), provideHttpClient(withFetch(),withInterceptors([headersInterceptor,loaderInterceptor,handleErrorInterceptor])), 
     importProvidersFrom(BrowserAnimationsModule,RouterModule)  
   ]
 };
+function withPrerendering(arg0: {
+  // 🔹 Exclude dynamic routes from prerendering
+  renderMode: (url: any) => "no-prerender" | "default";
+}): import("@angular/router").RouterFeatures {
+  throw new Error('Function not implemented.');
+}
+
