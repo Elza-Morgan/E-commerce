@@ -1,0 +1,57 @@
+
+<div class="main w-[80%] mx-auto my-4 ">
+
+    <div class="title">
+        <h5 class="text-center text-4xl font-medium tracking-tight text-green-600 p-4">All Brands</h5>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 my-4">
+        @for(brand of brandsList; track $index) {
+                <div (click)="getSpecificBrand(brand._id)" class="card bg-white border border-gray-200 rounded-md w-full h-[300px]">
+                    <img class="rounded-t-md w-full h-[250px] object-cover" [src]="brand.image" [alt]="brand.name" />
+                    <div class="p-4 flex-1 flex items-center justify-center">
+                        <h5 class="text-center text-xl tracking-tight dark:text-white">
+                            {{brand.name}}
+                        </h5>
+                    </div>
+             </div>
+        }
+
+    </div>
+</div>
+
+<div *ngIf="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="relative bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+      
+      <!-- Close Button -->
+      <button (click)="toggleModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+  
+      <!-- Modal Content -->
+      <div class="text-center">
+        <div class="flex flex-row items-center justify-between p-4 rounded-lg">
+            <!-- Titles Section -->
+            <div class="titles flex flex-col items-start flex-1">
+              <h3 class="text-2xl font-bold text-green-600 mb-2">{{ selectedBrand?.name }}</h3>
+              <p class="">{{ selectedBrand?.slug}}</p>
+            </div>
+          
+            <!-- Image Section -->
+            <div class="w-full flex justify-end">
+              <img *ngIf="selectedBrand?.image" class="w-32 h-auto rounded-lg" [src]="selectedBrand?.image" [alt]="selectedBrand?.name" />
+            </div>
+          </div>
+  
+            <!-- Close Button -->
+          <div class="w-full flex justify-end mt-4">
+            <button (click)="toggleModal()" class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+                Close
+            </button>
+        </div>
+
+      </div>
+    </div>
+  </div>

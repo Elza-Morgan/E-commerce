@@ -1,0 +1,43 @@
+<div class="md:w-[90%] mx-auto">
+    <div class="w-[50%] mx-auto my-4">
+        <input [(ngModel)]="searchValue" type="text" class="w-full rounded-md border" placeholder="enter your product name">
+    </div>
+    <div class="flex flex-wrap my-4">
+        @for(product of productList | filter:searchValue; track $index){
+        <div  class="md:w-1/6 p-3 w-full">
+            <div class="bg-slate-100 rounded p-3 flex flex-col items-center justify-center h-full w-full">
+                <div [routerLink]="['/productDetails',product._id]">
+                    <img [src]="product.imageCover" class="w-full" alt="products images">
+                    <span class="text-green-400 text-xs font-semibold">{{product.category.name}}</span>
+                    <p class="font-light my-3 text-black">{{product.title.split(' ').splice(0,2).join(' ') | onsale}}</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <i class="fa fa-star text-yellow-300"></i>
+                            <span>{{product.ratingsQuantity}}</span>
+                            <span class="text-slate-500 ms-1">({{product.quantity}})</span>
+                        </div>
+                        <div>
+                            <span>{{product.price | currency:'EUR'}} </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--& for the wishList -->
+                <div 
+                (click)="toggleToWishList(product)" 
+                class="icon-wishlist self-end cursor-pointer"
+                [ngClass]="{'active': isInWishList(product)}">
+                  <i class="fa-solid fa-heart fa-lg"></i>
+                </div>
+                
+                <div class="text-center my-3 w-full">
+                    <button (click)="addProductToCart(product._id)" class="text-white bg-green-600 mx-auto rounded py-3 w-full">+ Add to cart</button>
+                </div>
+            </div>
+        </div>
+        }
+
+
+    </div>
+
+</div>

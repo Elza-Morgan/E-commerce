@@ -1,0 +1,33 @@
+<div class="w-[80%] mx-auto my-4 grid grid-cols-3 gap-4">
+    @for(cat of categoryList; track $index){
+        <div (click)="getSpecificCategory(cat._id, cat.name)"  class="card bg-white border border-gray-200 rounded-md w-full h-[325px]">
+            <img class="rounded-t-md w-full h-[250px] object-cover" [src]="cat.image" [alt]="cat.name" />
+            <div class="p-4 flex-1 flex items-center justify-center">
+                <h5 class="text-center text-xl font-semibold tracking-tight text-green-600 dark:text-white">
+                    {{cat.name}}
+                </h5>
+            </div>
+        </div>
+    }
+</div>
+
+
+<!--& used to display related categories -->
+
+@if(selectedCatName !== null){
+    <div>
+        <div class="p-4"><h5 class="text-center text-3xl text-green-600 font-semibold">{{selectedCatName}} subcategories</h5></div>
+        <div class="w-[80%] mx-auto my-4 grid grid-cols-3 gap-4">
+            @for(subcat of specificCategoryList; track $index){
+                <div class="card bg-white border border-gray-200 rounded-md w-full">
+                    <div class="p-4 flex-1 flex items-center justify-center">
+                        <h5 class="text-center text-2xl font-semibold tracking-tightdark:text-white">
+                            {{subcat.name}}
+                        </h5>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}

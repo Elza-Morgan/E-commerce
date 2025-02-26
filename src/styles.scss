@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@use "variables" as *; //used to import file for the variables
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+
+        font-family:$main-font;
+}
+
+.toast-container .ngx-toastr{
+        background-color:#fff ;
+        border: 1px solid $main-color;
+}
+
+.toast-close-button, .toast-title,.toast-message
+{
+        color: $main-color !important;
+}
+
+
+.toast-progress{
+        background-color:$main-color !important;
+}

@@ -1,0 +1,52 @@
+
+<div class="md:w-[90%] mx-auto">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <!-- Table Header -->
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th colspan="4" class="px-6 py-4">
+                        <h5 class="text-3xl font-bold text-gray-900">My Wishlist</h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(wishlist of wishlists; track $index){
+                                    <!-- Wishlist Item 1 -->
+                <tr class="bg-gray-50 border-b hover:bg-gray-50">
+
+                    <!-- Image Column -->
+                    <div class="flex items-center">
+                        <td class="p-4">
+                            <img [src]="wishlist.imageCover" class="w-48 h-48 object-cover" [alt]="wishlist.title">
+                        </td>
+                        
+                        <!-- Product Info Column -->
+                        <td class="px-6 py-4 flex flex-col gap-3">
+                            <p class="text-lg font-semibold text-gray-900">{{wishlist.title}}</p>
+                            <p class="text-green-600 font-semibold">{{wishlist.price | currency:'EUR'}}</p>
+                            <a (click)="deleteItem(wishlist)" class="flex items-center text-red-600 hover:underline cursor-pointer">
+                                <svg class="w-5 h-5 mr-1 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H7a1 1 0 01-1-1V8zm8-3a1 1 0 00-1-1H7a1 1 0 00-1 1v1h8V5z" clip-rule="evenodd"></path>
+                                </svg>
+                                Remove
+                            </a>
+                        </td>
+                    </div>
+                    
+                    <!-- Add to Cart Button Column (Aligned to the end) -->
+                    <td class="px-6 py-4 text-right whitespace-nowrap">
+                        <button (click)="addProductToCart(wishlist._id)" class="font-medium border border-green-500 text-black px-6 py-3 rounded-lg hover:bg-green-100">
+                            Add to Cart
+                        </button>
+                    </td>
+                </tr>
+                }
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
