@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
     NgxSpinnerModule,
     provideAnimations(), // required animations providers
     provideToastr(),
-    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes,), provideClientHydration(withEventReplay()), provideHttpClient(withFetch(),withInterceptors([headersInterceptor,loaderInterceptor,handleErrorInterceptor])), 
+    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(withFetch(),withInterceptors([headersInterceptor,loaderInterceptor,handleErrorInterceptor])), 
     importProvidersFrom(BrowserAnimationsModule,RouterModule)  
   ]
 };

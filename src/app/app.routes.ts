@@ -38,7 +38,7 @@ export const routes: Routes = [
       { path: 'home', loadComponent: () => import('./Features/pages/home/home.component').then(c => c.HomeComponent)},
       { path: 'productDetails/:id', loadComponent: () => import('./Features/pages/product-details/product-details.component').then(c => c.ProductDetailsComponent) },
       { path: 'cart', canActivate: [authGuard], loadComponent: () => import('./Features/pages/cart/cart.component').then(c => c.CartComponent) },
-      { path: 'checkout/:id', component: CheckOutComponent, canActivate: [authGuard], title: 'Payment' },
+      { path: 'checkout/:id', component: CheckOutComponent, canActivate: [authGuard], title: 'Payment'},
       { path: 'catgories', loadComponent: () => import('./Features/pages/categories/categories.component').then(c => c.CategoriesComponent) },
       { path: 'brands', loadComponent: () => import('./Features/pages/brands/brands.component').then(c => c.BrandsComponent) },
       { path: 'products', loadComponent: () => import('./Features/pages/products/products.component').then(c => c.ProductsComponent) },
