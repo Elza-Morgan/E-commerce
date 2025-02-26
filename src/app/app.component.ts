@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./Features/layout/navbar/navbar.component";
 import { NgxSpinnerComponent } from 'ngx-spinner';
 
@@ -11,12 +11,11 @@ import 'flowbite';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'e-commerce';
 
+  // constructor(private router: Router) {
+  //   this.router.navigate(['/home']);
+  // }
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-  }
 }
