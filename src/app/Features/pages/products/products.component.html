@@ -3,7 +3,7 @@
         <input [(ngModel)]="searchValue" type="text" class="w-full rounded-md border" placeholder="enter your product name">
     </div>
     <div class="flex flex-wrap my-4">
-        @for(product of productList | filter:searchValue; track $index){
+        @for(product of productList | filter:searchValue; track product._id){
         <div  class="md:w-1/6 p-3 w-full">
             <div class="bg-slate-100 rounded p-3 flex flex-col items-center justify-center h-full w-full">
                 <div [routerLink]="['/productDetails',product._id]">

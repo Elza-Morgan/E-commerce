@@ -6,7 +6,7 @@
     </div>
 
     <div class="grid grid-cols-4 gap-4 my-4">
-        @for(brand of brandsList; track $index) {
+        @for(brand of brandsList; track brand._id) {
                 <div (click)="getSpecificBrand(brand._id)" class="card bg-white border border-gray-200 rounded-md w-full h-[300px]">
                     <img class="rounded-t-md w-full h-[250px] object-cover" [src]="brand.image" [alt]="brand.name" />
                     <div class="p-4 flex-1 flex items-center justify-center">
